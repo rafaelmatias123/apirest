@@ -1,69 +1,109 @@
-Minha API em REST
-Este pequeno projeto faz parte do material diático da Disciplina Desenvolvimento Full Stack 
 
-O projeto consiste em uma api rest + api externa da viacep + interface(front end), onde será realizada na api externa consultas por cep, para identificar o endereco correto das pessoas. Isso para criar um sistema de encomendas em uma determina regiao, com o intuito de impulsionar a efetividade de uma empresa que realiza encomendas por si própria.
+# Minha API em REST
 
-O objetivo aqui é apresetar uma API emplementada seguindo o estilo REST.
+Este pequeno projeto faz parte do material didático da disciplina **Desenvolvimento Full Stack**.
 
-As principais tecnologias que serão utilizadas aqui é o:
+O projeto consiste em uma **API REST**, integrada a uma **API externa da ViaCEP** e a uma interface (front-end). A API realiza consultas por CEP na API da ViaCEP para identificar o endereço correto das pessoas. A proposta é criar um sistema de encomendas para uma determinada região, com o objetivo de impulsionar a efetividade de uma empresa que realiza entregas por conta própria.
 
-Flask
-SQLAlchemy
-OpenAPI3
-SQLite
-Instalação
-Será necessário ter todas as libs python listadas no requirements.txt instaladas. Após clonar o repositório, é necessário ir ao diretório raiz, pelo terminal, para poder executar os comandos descritos abaixo.
+O objetivo aqui é apresentar uma API implementada seguindo o estilo **REST**.
 
-É fortemente indicado o uso de ambientes virtuais do tipo virtualenv.
+## Tecnologias utilizadas
 
+- Flask  
+- SQLAlchemy  
+- OpenAPI 3  
+- SQLite  
+
+---
+
+## Instalação
+
+Será necessário ter todas as libs Python listadas no `requirements.txt` instaladas. Após clonar o repositório, é necessário ir ao diretório raiz, pelo terminal, para poder executar os comandos descritos abaixo.
+
+> É fortemente indicado o uso de ambientes virtuais do tipo [virtualenv](https://virtualenv.pypa.io/).
+
+```bash
 (env)$ pip install -r requirements.txt
-Este comando instala as dependências/bibliotecas, descritas no arquivo requirements.txt.
+```
 
-Executando o servidor
+Este comando instala as dependências/bibliotecas descritas no arquivo `requirements.txt`.
+
+---
+
+## Executando o servidor
+
 Para executar a API basta executar:
 
-
-
+```bash
 (env)$ flask run --host 0.0.0.0 --port 5000
-Em modo de desenvolvimento é recomendado executar utilizando o parâmetro reload, que reiniciará o servidor automaticamente após uma mudança no código fonte.
+```
 
+Em modo de desenvolvimento é recomendado executar utilizando o parâmetro `--reload`, que reiniciará o servidor automaticamente após uma mudança no código-fonte:
 
-
+```bash
 (env)$ flask run --host 0.0.0.0 --port 5000 --reload
-Acesso no browser
+```
 
-Abra o http://localhost:5000/#/ no navegador para verificar o status da API em execução.
+Abra o [http://localhost:5000/#/](http://localhost:5000/#/) no navegador para verificar o status da API em execução.
 
-Como executar através do Docker
+---
+
+## Como executar através do Docker
+
 Certifique-se de ter o Docker instalado e em execução em sua máquina.
 
-Navegue até o diretório que contém o Dockerfile e o requirements.txt no terminal. Execute como administrador o seguinte comando para construir a imagem Docker:
+Navegue até o diretório que contém o `Dockerfile` e o `requirements.txt` no terminal. Execute como administrador o seguinte comando para construir a imagem Docker:
 
-$ docker build -t rest-api . ou docker build -t rest-api ./minhaapi
+```bash
+$ docker build -t rest-api .
+```
 
-Uma vez criada a imagem, para executar o container basta executar, como administrador, seguinte o comando:
+ou
 
+```bash
+$ docker build -t rest-api ./minhaapi
+```
+
+Uma vez criada a imagem, para executar o container basta rodar o seguinte comando como administrador:
+
+```bash
 $ docker run -p 5000:5000 rest-api
-Uma vez executando, para acessar a API, basta abrir o http://localhost:5000/#/ no navegador.
+```
 
-Alguns comandos úteis do Docker
-Para verificar se a imagem foi criada você pode executar o seguinte comando:
+Acesse a API em: [http://localhost:5000/#/](http://localhost:5000/#/)
 
+---
+
+## Alguns comandos úteis do Docker
+
+Verificar imagens criadas:
+
+```bash
 $ docker images
-Caso queira remover uma imagem, basta executar o comando:
+```
 
+Remover uma imagem:
+
+```bash
 $ docker rmi <IMAGE ID>
-Subistituindo o IMAGE ID pelo código da imagem
+```
 
-Para verificar se o container está em exceução você pode executar o seguinte comando:
+Verificar containers em execução:
 
+```bash
 $ docker container ls --all
-Caso queira parar um conatiner, basta executar o comando:
+```
 
+Parar um container:
+
+```bash
 $ docker stop <CONTAINER ID>
-Subistituindo o CONTAINER ID pelo ID do conatiner
+```
 
-Caso queira destruir um conatiner, basta executar o comando:
+Remover um container:
 
+```bash
 $ docker rm <CONTAINER ID>
-Para mais comandos, veja a documentação do docker.
+```
+
+Para mais comandos, consulte a [documentação oficial do Docker](https://docs.docker.com/).
